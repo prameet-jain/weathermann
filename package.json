@@ -1,6 +1,6 @@
 {
   "name": "weathermann",
-  "version": "1.0.0",
+  "version": "1.1.0-alpha.0",
   "description": "Our friend looking up in the clouds for weather report",
   "main": "index.js",
   "scripts": {
