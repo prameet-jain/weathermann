@@ -1,1 +1,1 @@
-import AppContainer from "./js/components/container/AppContainer.jsx";
+import AppContainer from "./container/AppContainer.jsx";
