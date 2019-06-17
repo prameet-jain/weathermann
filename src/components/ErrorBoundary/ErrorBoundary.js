@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AppError from "../AppError/AppError";
 
 class ErrorBoundary extends Component {
   constructor() {
@@ -15,14 +16,10 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.error) {
       // Fallback UI
-      return (
-        <h1>
-          Oppss !! Weather has effected weather mann, your friend will be back
-          after medication !
-        </h1>
-      );
+      <AppError />;
     }
     return this.props.children;
   }
 }
+
 export default ErrorBoundary;
