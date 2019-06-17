@@ -1,24 +1,24 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-const useStyles = makeStyles({
+const styles = {
   radioLabel: {
     display: "block",
     textAlign: "center"
   }
-});
+};
 
-function TemperatureControl() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("f");
+function TemperatureControl(props) {
+  const { classes, changeTempUnit, tempUnit } = props;
 
   function handleChange(event) {
-    setValue(event.target.value);
+    changeTempUnit(event.target.value);
   }
 
   return (
@@ -27,7 +27,7 @@ function TemperatureControl() {
         <RadioGroup
           aria-label="position"
           name="position"
-          value={value}
+          value={tempUnit}
           onChange={handleChange}
           row
         >
@@ -53,4 +53,10 @@ function TemperatureControl() {
   );
 }
 
-export default TemperatureControl;
+TemperatureControl.propTypes = {
+  classes: PropTypes.object.isRequired,
+  tempUnit: PropTypes.string.isRequired,
+  changeTempUnit: PropTypes.func.isRequired
+};
+
+export default React.memo(withStyles(styles)(TemperatureControl));
